@@ -9,5 +9,23 @@
 
 
 <ion-content padding>
-
+  <form >
+    <ion-item>
+      <ion-label floating color="secondary">Marca</ion-label>
+      <ion-input type="text" color="secondary"></ion-input> 
+    </ion-item>
+    <ion-item>
+      <ion-label floating color="secondary">Modelo</ion-label>
+      <ion-input type="text" color="secondary"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating color="secondary">Consumo/KM</ion-label>
+      <ion-input type="text" color="secondary"></ion-input>
+    </ion-item>
+    <ion-item>
+      <button ion-button block type="submit" color="secondary">Cadastar</button>
+    </ion-item>
+  </form>
+  <br>
+  <button ion-button color="secondary" (click)="home()">Home</button>
 </ion-content>

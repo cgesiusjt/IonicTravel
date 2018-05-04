@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Inject, Injectable } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { HomePage } from '../home/home';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 
 @IonicPage()
@@ -7,13 +10,27 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   selector: 'page-veiculo',
   templateUrl: 'veiculo.html',
 })
+@Injectable()
 export class VeiculoPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  private PATH = 'veiculo/';
+
+  veiculo = {
+    marca: 'Chevrolet',
+    modelo: 'S10',
+    cor: 'Preta'
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad VeiculoPage');
+  constructor(public navCtrl: NavController, public navParams: NavParams, private  db: AngularFireDatabase) {
+    //this.db.list('veiculo').push(this.veiculo);
+  }
+
+  home() {
+    this.navCtrl.push(HomePage);
+  }
+
+  save(veiculo: any) {
+
   }
 
 }
