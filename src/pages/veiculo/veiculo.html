@@ -26,7 +26,7 @@
 
   <ion-item>
     <ion-label floating color="secondary">Consumo</ion-label>
-    <ion-input type="number" [(ngModel)]="veiculo.consumo"></ion-input>
+    <ion-input type="number" [(ngModel)]="veiculo.consumo" riquired></ion-input>
   </ion-item>
 
   <ion-item>
@@ -34,6 +34,6 @@
     <ion-input type="text" [(ngModel)]="veiculo.tipoCombustivel"></ion-input>
   </ion-item>
 
-  <button ion-button block color="secondary" (cadastrar)="cadastrar(veiculo)">Cadastrar</button>
+  <button ion-button block color="secondary" (click)="cadastrar(veiculo)">Cadastrar</button>
 
 </ion-content>

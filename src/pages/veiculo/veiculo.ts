@@ -1,12 +1,8 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the VeiculoPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Component, NgModule } from '@angular/core';
+import { IonicPage, NavController, NavParams, Alert } from 'ionic-angular';
+import { Veiculo } from '../../models/veiculo';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { FormsModule } from '@angular/forms';
 
 @IonicPage()
 @Component({
@@ -15,11 +11,29 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class VeiculoPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  veiculo = {} as Veiculo;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private db: AngularFireDatabase, private form: FormsModule) {
+      
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad VeiculoPage');
+  }
+
+  cadastrar(veiculo: Veiculo) {
+      try {
+        if(veiculo.marca !== null && veiculo.marca !== undefined) {
+          this.db.list('Veiculo').push(this.veiculo);
+          alert(">>>Veiculo Cadastrado com sucesso <<< " + veiculo.marca)
+        } else {
+          alert("Veiculo com valor nulo: " + veiculo);
+        }
+      } catch (error) {
+        console.log(">>> Erro ao cadastrar Veiculo <<< " + error);
+        alert(">>> Erro ao cadastrar veiculo <<<");
+      }
+
   }
 
 }
