@@ -9,31 +9,42 @@
 
 
 <ion-content padding>
-  <ion-item>
-    <ion-label floating color="secondary">Marca</ion-label>
-    <ion-input type="text" [(ngModel)]="veiculo.marca"></ion-input>
-  </ion-item>
 
-  <ion-item>
-    <ion-label floating color="secondary">Modelo</ion-label>
-    <ion-input type="text" [(ngModel)]="veiculo.modelo"></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label floating color="secondary">Motor</ion-label>
-    <ion-input type="text" [(ngModel)]="veiculo.motor"></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label floating color="secondary">Consumo</ion-label>
-    <ion-input type="number" [(ngModel)]="veiculo.consumo" riquired></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label floating color="secondary">Tipo Combustivel</ion-label>
-    <ion-input type="text" [(ngModel)]="veiculo.tipoCombustivel"></ion-input>
-  </ion-item>
-
-  <button ion-button block color="secondary" (click)="cadastrar(veiculo)">Cadastrar</button>
+  <!-- Desabilata a validação do formulario pelo navegador(cada navegador tem uma validação diferente) -->
+  {{formVeiculo.valid}}
+  {{formVeiculo.value | json}}
+  <form novalidate #formVeiculo="ngForm">
+    <ion-item>
+      <ion-label floating color="secondary">Marca</ion-label>
+      <ion-input type="text" [(ngModel)]="veiculo.marca" name="marca" #iptMarca="ngModel" 
+        required minlength="1"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label floating color="secondary">Modelo</ion-label>
+      <ion-input type="text" [(ngModel)]="veiculo.modelo" name="modelo" #iptModelo="ngModel" 
+        required minlength="1"></ion-input>
+    </ion-item>
+  
+    <ion-item >
+      <ion-label floating color="secondary">Motor</ion-label>
+      <ion-input type="text" [(ngModel)]="veiculo.motor"name="motor" #iptMotor="ngModel" required minlength="3"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label floating color="secondary">Consumo</ion-label>
+      <ion-input type="number" [(ngModel)]="veiculo.consumo" name="consumo" #iptConsumo="ngModel" 
+        required minlength="1"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label floating color="secondary">Tipo Combustivel</ion-label>
+      <ion-input type="text" [(ngModel)]="veiculo.tipoCombustivel" name="tipoCombustivel" 
+        #iptTpCombustivel="ngModel" required minlength="1"></ion-input>
+    </ion-item>
+  
+    <button ion-button block color="secondary" (click)="cadastrar(veiculo)" 
+      [disabled]="formVeiculo.invalid">Cadastrar</button>
+  </form>
 
 </ion-content>
