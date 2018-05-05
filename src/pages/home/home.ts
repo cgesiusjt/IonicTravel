@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import { VeiculoPage } from '../veiculo/veiculo';
+import { NavController,ToastController } from 'ionic-angular';
+import { AngularFireAuth } from "angularfire2/auth";
 
 @Component({
   selector: 'page-home',
@@ -8,12 +8,23 @@ import { VeiculoPage } from '../veiculo/veiculo';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(private afAuth:AngularFireAuth,private toast:ToastController,public navCtrl: NavController) {
 
   }
-
-  veiculo() {
-    this.navCtrl.push(VeiculoPage);
+  ionViewDidLoad(){
+    this.afAuth.authState.subscribe(data => {
+      if (data && data.email && data.uid){
+         this.toast.create({
+            message:`Bem-vindo,${data.email}`,
+            duration:3000
+          }).present();
+       }else{
+        this.toast.create({
+          message:`usuario não encontrado`,
+          duration:3000
+        }).present();
+      }
+    });
   }
 
 }
