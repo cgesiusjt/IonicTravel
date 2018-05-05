@@ -1,0 +1,39 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>veiculo</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <ion-label floating color="secondary">Marca</ion-label>
+    <ion-input type="text" [(ngModel)]="veiculo.marca"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating color="secondary">Modelo</ion-label>
+    <ion-input type="text" [(ngModel)]="veiculo.modelo"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating color="secondary">Motor</ion-label>
+    <ion-input type="text" [(ngModel)]="veiculo.motor"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating color="secondary">Consumo</ion-label>
+    <ion-input type="number" [(ngModel)]="veiculo.consumo"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating color="secondary">Tipo Combustivel</ion-label>
+    <ion-input type="text" [(ngModel)]="veiculo.tipoCombustivel"></ion-input>
+  </ion-item>
+
+  <button ion-button block color="secondary" (cadastrar)="cadastrar(veiculo)">Cadastrar</button>
+
+</ion-content>
