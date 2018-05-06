@@ -14,7 +14,7 @@ export class VeiculoPage {
   veiculo = {} as Veiculo;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-    private db: AngularFireDatabase, private form: FormsModule, private alertCtrl: AlertController) {
+    private db: AngularFireDatabase, private alertCtrl: AlertController) {
       
   }
 
