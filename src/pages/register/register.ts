@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireAuth } from "angularfire2/auth";
 import { User } from "../../models/user";
+import { FormsModule } from '@angular/forms';
 
 
 @IonicPage()
@@ -12,7 +13,7 @@ import { User } from "../../models/user";
 export class RegisterPage {
   user = {} as User;  
 
-  constructor(private afAuth:AngularFireAuth,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private form: FormsModule, private afAuth:AngularFireAuth,public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {

@@ -16,30 +16,31 @@
     <ion-item>
       <ion-label floating color="secondary">Marca</ion-label>
       <ion-input type="text" [(ngModel)]="veiculo.marca" name="marca" #iptMarca="ngModel" 
-        required minlength="3"></ion-input>
+        required minlength="3" maxlength="20"></ion-input>
     </ion-item>
   
     <ion-item>
       <ion-label floating color="secondary">Modelo</ion-label>
       <ion-input type="text" [(ngModel)]="veiculo.modelo" name="modelo" #iptModelo="ngModel" 
-        required minlength="2"></ion-input>
+        required minlength="2"  maxlength="20"></ion-input>
     </ion-item>
   
     <ion-item >
       <ion-label floating color="secondary">Motor</ion-label>
-      <ion-input type="text" [(ngModel)]="veiculo.motor"name="motor" #iptMotor="ngModel" required minlength="3"></ion-input>
+      <ion-input type="text" [(ngModel)]="veiculo.motor"name="motor" #iptMotor="ngModel" 
+        required minlength="3"  maxlength="10"></ion-input>
     </ion-item>
   
     <ion-item>
       <ion-label floating color="secondary">Consumo</ion-label>
       <ion-input type="number" [(ngModel)]="veiculo.consumo" name="consumo" #iptConsumo="ngModel" 
-        required minlength="1"></ion-input>
+        required minlength="1"  maxlength="2"></ion-input>
     </ion-item>
   
     <ion-item>
       <ion-label floating color="secondary">Tipo Combustivel</ion-label>
       <ion-input type="text" [(ngModel)]="veiculo.tipoCombustivel" name="tipoCombustivel" 
-        #iptTpCombustivel="ngModel" required minlength="3"></ion-input>
+        #iptTpCombustivel="ngModel" required minlength="3"  maxlength="20"></ion-input>
     </ion-item>
   
     <button ion-button block color="secondary" (click)="cadastrar(veiculo); formVeiculo.reset()" 

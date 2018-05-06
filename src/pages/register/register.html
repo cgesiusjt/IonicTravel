@@ -9,16 +9,19 @@
 
 
 <ion-content padding>
-    <ion-item>
-      <ion-label floating color="secondary">E-mail</ion-label>
-      <ion-input type="text" [(ngModel)]="user.email"></ion-input>
-    </ion-item>
-    
-    <ion-item>
-      <ion-label floating color="secondary">Senha</ion-label>
-      <ion-input type="password" [(ngModel)]="user.password"></ion-input>
-    </ion-item>
-
-    <button ion-button color="secondary" (click)="register(user)">Registrar</button>
+    <form novalidate #formRegister="ngForm">
+        <ion-item>
+            <ion-label floating color="secondary">E-mail</ion-label>
+            <ion-input type="text" [(ngModel)]="user.email" name="email" #iptEmail="ngModel" required></ion-input>
+          </ion-item>
+          
+          <ion-item>
+            <ion-label floating color="secondary">Senha</ion-label>
+            <ion-input type="password" [(ngModel)]="user.password" name="password" #iptPassword="ngModel" required minlength="6"></ion-input>
+          </ion-item>
+      
+          <button ion-button color="secondary" (click)="register(user); formRegister.reset()"
+            [disabled]="formRegister.invalid">Registrar</button>
+    </form>
     
 </ion-content>
