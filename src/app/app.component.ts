@@ -25,7 +25,6 @@ export class MyApp {
       { title: 'Home', component: HomePage },
       { title: 'Login',component: LoginPage},
       { title: 'Veiculo',component: VeiculoPage},
-
     ];
 
   }

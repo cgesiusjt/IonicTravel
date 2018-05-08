@@ -9,9 +9,14 @@ declare var google;
   templateUrl: 'home.html'
 })
 export class HomePage {
+  directionsService = new google.maps.DirectionsService();
+  directionsDisplay = new google.maps.DirectionsRenderer();
+  map: any;
+  startPosition: any;
+  originPosition: string;
+  destinationPosition: string;
  
   @ViewChild('map') mapElement: ElementRef;
-  map: any;
  
   constructor(private afAuth:AngularFireAuth,private toast:ToastController,public navCtrl: NavController) {
     
@@ -36,17 +41,38 @@ export class HomePage {
   }
  
   loadMap(){
- 
-    let latLng = new google.maps.LatLng(-23.5694199,-46.71383);
- 
+
+    this.startPosition = new google.maps.LatLng(-23.569419, -46.71383);
+    
     let mapOptions = {
-      center: latLng,
+      center:this.startPosition,
       zoom: 15,
       streetViewControl:false,
-      mapTypeId: 'roadmap'
+      mapTypeId: 'roadmap',
+      disableDefaultUI: true
     }
+    
+    this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    this.directionsDisplay.setMap(this.map);
+  }
+
+  calculateRoute() {
+    if (this.destinationPosition && this.originPosition) {
+      const request = {
+        origin: this.originPosition,
+        destination: this.destinationPosition,
+        travelMode: 'DRIVING'
+      };
  
-    this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+      this.traceRoute(this.directionsService, this.directionsDisplay, request);
+    }
+  }
  
+  traceRoute(service: any, display: any, request: any) {
+    service.route(request, function (result, status) {
+      if (status == 'OK') {
+        display.setDirections(result);
+      }
+    });
   }
 }
