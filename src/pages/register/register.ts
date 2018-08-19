@@ -13,7 +13,8 @@ import { FormsModule } from '@angular/forms';
 export class RegisterPage {
   user = {} as User;  
 
-  constructor(private form: FormsModule, private afAuth:AngularFireAuth,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public form: FormsModule, private afAuth:AngularFireAuth,public navCtrl: NavController, public navParams: NavParams) {
+
   }
 
   ionViewDidLoad() {

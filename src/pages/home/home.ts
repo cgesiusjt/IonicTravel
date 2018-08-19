@@ -1,6 +1,6 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController,ToastController } from 'ionic-angular';
-import { AngularFireAuth } from "angularfire2/auth"
+import { AngularFireAuth } from "angularfire2/auth";
  
 declare var google;
  
@@ -18,7 +18,7 @@ export class HomePage {
  
   @ViewChild('map') mapElement: ElementRef;
  
-  constructor(private afAuth:AngularFireAuth,private toast:ToastController,public navCtrl: NavController) {
+  constructor(private afAuth:AngularFireAuth, private toast:ToastController, public navCtrl: NavController) {
     
   }
  
